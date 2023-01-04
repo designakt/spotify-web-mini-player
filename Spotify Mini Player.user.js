@@ -6,7 +6,7 @@
 // @author       designakt
 // @match        *://open.spotify.com/*
 // @icon         https://developer.spotify.com/assets/branding-guidelines/icon4@2x.png
-// @run-at       document-end
+// @run-at       document-start
 // @grant        none
 // @license      GNU GPLv3
 // ==/UserScript==
@@ -24,6 +24,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOU+A8AATUBGe90iuoAAAAASUVORK5CYII=);
+    transition: background-image 6s ease-out;
   }
   .Root__now-playing-bar footer {
     background-color:rgba(24,24,24,0.4);
@@ -67,7 +69,7 @@
     flex-basis: auto;
   }
 }`;
-    // apply aboce css
+    // apply above css
     addGlobalStyle(customCSS);
 
     // wait for document to complete
