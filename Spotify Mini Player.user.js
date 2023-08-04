@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Spotify Mini Player
 // @namespace    Spotify
-// @version      0.22
+// @version      0.23
 // @description  An enhancement to the spotify web player to make it a usable player in small window sizes. Especially useful when installing the web player as a standalone web app.
 // @author       designakt
 // @match        *://open.spotify.com/*
@@ -54,46 +54,79 @@
     min-height: 100vh;
   }
 
+  /* Now Playing Bar Layout to vertical */
   .Root__now-playing-bar footer>div,
   footer > div{
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column !important;
+    justify-content: center !important;
     gap: 16px;
-    padding: 0;
+    padding: 0 !important;
   }
-  .Root__now-playing-bar footer>div>div
+  /* Widen Now Playing Bar content areas */
+  .Root__now-playing-bar footer>div>div,
   footer > div > div{
-    width:70%;
+    width:70% !important;
   }
-  .Root__now-playing-bar footer>div>div:first-child>div
+  /* Cover,Title,Artist block */
+  .Root__now-playing-bar footer>div>div:first-child>div,
   footer > div > div:first-child > div{
+    justify-content: space-between;
+    gap: 8px;
     transform: none;
     transition: none;
   }
-  .Root__now-playing-bar footer>div>div:first-child>div>div:first-child>button{
+  /* Cover box */
+  footer > div > div:first-child > div > div:first-child{
+    transform: none;
+  }
+  /* Cover Expand Button */
+  .Root__now-playing-bar footer>div>div:first-child>div>div:first-child>button,
+  footer > div > div:first-child > div > div:first-child > button{
     display: none;
   }
-  .Root__now-playing-bar footer>div>div:first-child>div>div:first-child img{
+  /* Cover Link */
+  .Root__now-playing-bar footer>div>div:first-child>div>div:first-child img,
+  footer > div > div:first-child > div > div:first-child > div > a {
+      cursor: default;
   }
-  .Root__now-playing-bar footer>div>div:first-child>div>div:nth-child(2){
+  /* Title, Artist box */
+  .Root__now-playing-bar footer>div>div:first-child>div>div:nth-child(2),
+  footer > div > div:first-child > div > div:nth-child(2){
     width: 100%;
   }
-  .Root__now-playing-bar footer>div>div:nth-child(2){
-  }
-  .Root__now-playing-bar footer>div>div:last-child{
-    justify-content: center;
-  }
-  .Root__now-playing-bar footer>div>div:last-child>div .volume-bar{
-    width:100%;
-    flex-basis: auto;
-  }
+  /* Playback block */
   .playback-bar>div:first-child{
     min-width: 25px;
   }
   .playback-bar>div:last-child{
     min-width: 30px;
   }
-}`;
+  /* Volume block */
+  .Root__now-playing-bar footer>div>div:last-child,
+  footer > div > div:last-child{
+    justify-content: center;
+  }
+  footer > div > div:last-child > div {
+    flex-direction: row-reverse;
+  }
+  .Root__now-playing-bar footer>div>div:last-child>div .volume-bar,
+  footer > div > div:last-child > div .volume-bar{
+    width:100%;
+    flex-basis: auto;
+  }
+  button[data-testid="control-button-npv"],
+  button[data-testid="lyrics-button"],
+  button[data-testid="control-button-queue"],
+  div[data-testid="indicator"]{
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  div:has(> footer){
+    background-image:none !important;
+  }
+}
+`;
     // apply above css
     addGlobalStyle(customCSS);
 
