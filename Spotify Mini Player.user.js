@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Spotify Mini Player
 // @namespace    Spotify
-// @version      0.24
+// @version      0.25
 // @description  An enhancement to the spotify web player to make it a usable player in small window sizes. Especially useful when installing the web player as a standalone web app.
 // @author       designakt
 // @match        *://open.spotify.com/*
@@ -79,6 +79,7 @@
   /* Cover box */
   footer > div > div:first-child > div > div:first-child{
     transform: none;
+    box-shadow: 0 1px 15px rgba(0,0,0,.3);
   }
   /* Cover Expand Button */
   .Root__now-playing-bar footer>div>div:first-child>div>div:first-child>button,
@@ -122,8 +123,8 @@
     display: none;
   }
 }
-@media screen and (min-width: 800px),
-       screen and (min-height: 565px) {
+@media screen and (min-width: 800px)
+              and (min-height: 565px) {
   div:has(> footer){
     background-image:none !important;
   }
